@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAP Tool for Grid and Rotation | Miquel Julián</title>
+    <link rel="stylesheet" href="/common/style.css?v=1">
+    <link rel="stylesheet" href="/common/font.css?v=1">
+    <meta name="description" content="SAP Tool for Grid and Rotation in Unreal Engine 5.">
+    <style>
+        html {
+            overflow-y: scroll;
+            scrollbar-color: #303030 #111111;
+            scrollbar-width: auto;
+            --viewport-height: 75vh;
+            --viewport-height-invert: calc(100vh - var(--viewport-height));
+            background-color: #212121;
+        }
+
+        body {
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            color: #d0d0d0;
+            margin: 0;
+            padding: 0;
+            font-family: 'Rubik', sans-serif;
+            font-size: 17px;
+            font-weight: 400;
+            background-color: #212121;
+            background-image: url("bg_white_noise.webp");
+            background-repeat: repeat;
+            text-rendering: geometricPrecision;
+        }
+
+        #main-header {
+            max-width: 100%;
+            padding: 32px 100px;
+        }
+
+        #main-header-name {
+            display: flex;
+            align-items: center;
+        }
+
+        #main-logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        #main-handwritten-logo {
+            height: 48px;
+            margin-left: 12px;
+            vertical-align: middle;
+        }
+
+        .header-link {
+            color: #ff4c70;
+            font-size: 16px;
+            font-weight: 500;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+
+        .header-link:hover {
+            text-decoration: underline;
+        }
+
+        #main-body {
+            padding: 32px;
+        }
+
+        #main-footer {
+            text-align: center;
+            padding: 48px 16px;
+            font-size: 14px;
+            color: #888;
+            background-color: #1a1a1a;
+            border-top: 1px solid #333;
+        }
+
+        .footer-link {
+            color: #ff4c70;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        #page-title {
+            color: #ff4c70;
+            font-size: 28px;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-top: 48px;
+            margin-bottom: 24px;
+            border-bottom: 2px solid #ff4c70;
+            padding-bottom: 6px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <span id="page-top"></span>
+
+    <div id="main-header">
+        <div id="main-header-name">
+
+            <img id="main-logo" src="Micara.jpg" alt="Miquel Julián">
+            <img id="main-handwritten-logo" src="imagenmarca.png" alt="Miquel Julián logo">
+        </div>
+    </div>
+
+    <div id="main-body">
+        <div id="page-title">
+            <h1>SNAP Tool for Grid and Rotation in Unreal</h1>
+        </div>
+
+        <!-- Video section -->
+        <div id="video-section" style="text-align: center; margin-bottom: 32px;">
+            <video width="80%" controls>
+                <source src="Transformtool.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <!-- Explanation below video -->
+        <p>
+            This tool allows users to quickly align and rotate objects to a grid in Unreal Engine, making level design and asset placement easier and more efficient. The tool utilizes a user-friendly interface that gives the flexibility to snap objects to custom grid sizes and rotate them with precision, ensuring better workflow within Unreal Engine.
+        </p>
+    </div>
+
+    <div id="main-footer">
+        <p>
+            <a class="footer-link" href="index.html">
+                <br>
+                Home Page
+            </a>
+        </p>
+    </div>
+</body>
+
+</html>

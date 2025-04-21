@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Miquel Julián</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet" />
+    <meta name="description" content="Technical Artist Portfolio focused on Unreal Engine 5 VFX and tools." />
+    <style>
+        :root {
+            --accent: #ff4c70;
+            --dark-bg: #212121;
+            --card-bg: #2b2b2b;
+            --text-color: #e0e0e0;
+            --font: 'Rubik', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--dark-bg);
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font);
+            font-size: 17px;
+            color: var(--text-color);
+            background-image: url("bg_white_noise.webp");
+            background-repeat: repeat;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* === HEADER ORIGINAL === */
+        #header-background-area {
+            padding: 32px 100px;
+            background-color: #212121;
+        }
+
+        #main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #main-header-name {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+
+        #main-header-name::after {
+            content: "MIKEL JULIÁN";
+            font-size: 36px;
+            color: #ffffff;
+            font-weight: bold;
+            margin-left: 24px;
+            white-space: nowrap;
+        }
+
+        #main-logo {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: cover;
+            padding-left: 16px;
+        }
+
+        #main-handwritten-logo {
+            height: 48px;
+            margin-left: 12px;
+            vertical-align: middle;
+        }
+
+        #main-header-icons a {
+            text-decoration: none;
+        }
+
+        #main-header-icons img {
+            width: 48px;
+            height: 48px;
+            margin: 0 12px;
+            transition: transform 0.2s;
+        }
+
+        #main-header-icons img:hover {
+            transform: scale(1.1);
+        }
+
+        #main-header-text a {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #fff;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        #main-header-text a:hover {
+            background-color: #ff6a85;
+            transform: translateY(-2px);
+        }
+
+        /* === ESTILO MODERNO PARA EL RESTO === */
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(to bottom, #1a1a1a, #212121);
+        }
+
+        .hero img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            opacity: 0.15;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            z-index: 2;
+            color: #fff;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 16px;
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 8px;
+            margin-bottom: 32px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .image-portfolio {
+            background-color: var(--card-bg);
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            height: 220px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .image-portfolio::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .link-portfolio {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            font-size: 20px;
+            font-weight: 600;
+            z-index: 2;
+            color: #fff;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+        }
+
+
+        .image-portfolio:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
+        }
+
+        .link-portfolio {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            font-size: 20px;
+            font-weight: 600;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        footer {
+            text-align: center;
+            padding: 48px 16px;
+            font-size: 14px;
+            color: #888;
+            background-color: #1a1a1a;
+            border-top: 1px solid #333;
+        }
+
+        footer a {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            #header-background-area {
+                padding: 16px;
+            }
+
+            #main-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 16px;
+            }
+
+            #main-header-name {
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 12px;
+            }
+
+            #main-header-name::after {
+                font-size: 24px;
+                margin-left: 0;
+                margin-top: 8px;
+            }
+
+            #main-logo {
+                width: 72px;
+                height: 72px;
+                padding-left: 0;
+            }
+
+            #main-handwritten-logo {
+                height: 32px;
+                margin-left: 0;
+                margin-top: 6px;
+            }
+
+            #main-header-icons img {
+                width: 36px;
+                height: 36px;
+                margin: 0 8px;
+            }
+
+            #main-header-text a {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+                padding: 0 10px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .image-portfolio {
+                height: 180px;
+            }
+
+            .link-portfolio {
+                font-size: 18px;
+                bottom: 12px;
+                left: 12px;
+            }
+
+            section {
+                padding: 40px 12px;
+            }
+
+            h2 {
+                font-size: 20px;
+                text-align: center;
+            }
+
+            footer {
+                font-size: 12px;
+                padding: 32px 10px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <span id="page-top"></span>
+
+    <div id="header-background-area">
+        <div id="main-header">
+            <div id="main-header-name">
+                <img id="main-logo" src="Micara.jpg" alt="Mikel Julián" />
+                <img id="main-handwritten-logo" src="imagenmarca.png" alt="Mikel Julián logo" />
+                <a href="/" id="main-header-link"></a>
+            </div>
+            <div id="main-header-icons">
+                <a href="https://www.linkedin.com/in/mikel-juli%C3%A1n-villena-a95775267/" target="_blank">
+                    <img src="icons/LinkedIn_icon.svg.png" alt="LinkedIn" />
+                </a>
+                <a href="mailto:mikeljulian07@gmail.com">
+                    <img src="icons/Microsoft_Outlook_2013-2019_logo.svg.png" alt="Email" />
+                </a>
+                <a href="https://www.artstation.com/mikeljulian3" target="_blank">
+                    <img src="icons/artistation.png" alt="ArtStation" />
+                </a>
+            </div>
+            <div id="main-header-text">
+                <a href="CV.html" target="_blank">Resume</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="hero">
+        <img src="Frame%201%20(1).jpg" alt="Background" />
+        <h1>Portfolio</h1>
+        <p>Projects and tools that highlight my VFX and tech art skills in Unreal Engine 5 and 3ds Max.</p>
+    </section>
+
+    <section>
+        <h2>Unreal Engine Tools</h2>
+        <div class="portfolio-grid">
+            <a class="image-portfolio" href="AssetManager.html" style="background-image:url('banerrename.JPG')">
+                <span class="link-portfolio">Asset Manager</span></a>
+            <a class="image-portfolio" href="TransformTools.html" style="background-image:url('banergrid.JPG')">
+                <span class="link-portfolio">Grid Transform</span></a>
+            <a class="image-portfolio" href="UItool.html" style="background-image:url('banerUI.JPG')">
+                <span class="link-portfolio">Realtime UI Prototyping</span></a>
+        </div>
+    </section>
+
+    <section>
+        <h2>3ds Max Tools</h2>
+        <div class="portfolio-grid">
+            <a class="image-portfolio" href="Pivot.html" style="background-image:url('pivot.JPG')">
+                <span class="link-portfolio">Pivot Editor Tool</span></a>
+            <a class="image-portfolio" href="BulkExport.html" style="background-image:url('expot.JPG')">
+                <span class="link-portfolio">Batch Export to 0,0,0</span></a>
+            <a class="image-portfolio" href="PBR.html" style="background-image:url('PBR.JPG')">
+                <span class="link-portfolio">PBR Material Creator</span></a>
+        </div>
+    </section>
+
+    <section>
+        <h2>VFX Projects</h2>
+        <div class="portfolio-grid">
+            <a class="image-portfolio" href="Kelpie.html" style="background-image:url('Frame%201%20(1).jpg')">
+                <span class="link-portfolio">Dynamic Render Shader</span></a>
+            <a class="image-portfolio" href="Fireball.html" style="background-image:url('fireball.JPG')">
+                <span class="link-portfolio">Fireball</span></a>
+        </div>
+    </section>
+
+    <footer>
+        <p><a href="#page-top">Back To Top</a></p>
+        <p>Mikel Julián - 2025</p>
+    </footer>
+</body>
+
+</html>

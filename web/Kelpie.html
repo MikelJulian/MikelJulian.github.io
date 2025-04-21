@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic VR Shader | Miquel Julián</title>
+    <link rel="stylesheet" href="/common/style.css?v=1" />
+    <link rel="stylesheet" href="/common/font.css?v=1" />
+    <meta name="description" content="Custom VR shader to display different visuals per eye inside virtual reality headsets." />
+    <style>
+        html {
+            background-color: #212121;
+            scrollbar-color: #303030 #111111;
+            scrollbar-width: auto;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            color: #d0d0d0;
+            font-family: 'Rubik', sans-serif;
+            background-color: #212121;
+            background-image: url("/bg_white_noise.webp");
+            background-repeat: repeat;
+        }
+
+        #main-header {
+            max-width: 100%;
+            padding: 32px 100px;
+            display: flex;
+            align-items: center;
+        }
+
+        #main-logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        #main-handwritten-logo {
+            height: 48px;
+            margin-left: 12px;
+        }
+
+        #main-body {
+            padding: 32px;
+        }
+
+        #page-title {
+            color: #ff4c70;
+            font-size: 28px;
+            font-weight: 500;
+            margin-top: 48px;
+            margin-bottom: 24px;
+            border-bottom: 2px solid #ff4c70;
+            padding-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        #video-section {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        #main-footer {
+            text-align: center;
+            padding: 48px 16px;
+            font-size: 14px;
+            color: #888;
+            background-color: #1a1a1a;
+            border-top: 1px solid #333;
+        }
+
+        .footer-link {
+            color: #ff4c70;
+            font-size: 16px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+
+<body>
+    <span id="page-top"></span>
+
+    <div id="main-header">
+        <img id="main-logo" src="Micara.jpg" alt="Miquel Julián" />
+        <img id="main-handwritten-logo" src="imagenmarca.png" alt="Miquel Julián logo" />
+    </div>
+
+    <div id="main-body">
+        <div id="page-title">
+            <h1>Dynamic VR Shader</h1>
+        </div>
+
+        <div id="video-section">
+            <video width="80%" controls>
+                <source src="kelpie.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <p>
+            This custom shader leverages stereo rendering in VR to display **different visuals per eye**. It can be used to:
+        </p>
+        <ul>
+            <li>Show hidden objects only visible to one eye.</li>
+            <li>Convey narrative or puzzle elements accessible through subtle stereo illusions.</li>
+            <li>Display debugging info or UI hints just to developers/testers during VR runtime.</li>
+        </ul>
+
+        <p>
+            Implemented using custom nodes in Unreal Engine’s material editor and stereo instance awareness, this shader allows total control over what each eye perceives. It's also compatible with post-process materials and translucent elements.
+        </p>
+
+        <p>
+            This technique opens new doors for creative storytelling, interaction design, and technical problem-solving within immersive environments.
+        </p>
+    </div>
+
+    <div id="main-footer">
+        <p><a class="footer-link" href="index.html"><br>Home Page</a></p>
+    </div>
+</body>
+
+</html>
