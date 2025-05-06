@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Procedural Fireball VFX | Miquel Julián</title>
+    <link rel="stylesheet" href="/common/style.css?v=1" />
+    <link rel="stylesheet" href="/common/font.css?v=1" />
+    <meta name="description" content="Highly optimized procedural fireball VFX made in Unreal Engine's Material Editor with no external textures." />
+    <style>
+        html {
+            background-color: #212121;
+            scrollbar-color: #303030 #111111;
+            scrollbar-width: auto;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            color: #d0d0d0;
+            font-family: 'Rubik', sans-serif;
+            background-color: #212121;
+            background-image: url("/bg_white_noise.webp");
+            background-repeat: repeat;
+        }
+
+        #main-header {
+            max-width: 100%;
+            padding: 32px 100px;
+            display: flex;
+            align-items: center;
+        }
+
+        #main-logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        #main-handwritten-logo {
+            height: 48px;
+            margin-left: 12px;
+        }
+
+        #main-body {
+            padding: 32px;
+        }
+
+        #page-title {
+            color: #ff4c70;
+            font-size: 28px;
+            font-weight: 500;
+            margin-top: 48px;
+            margin-bottom: 24px;
+            border-bottom: 2px solid #ff4c70;
+            padding-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        #video-section {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        #main-footer {
+            text-align: center;
+            padding: 48px 16px;
+            font-size: 14px;
+            color: #888;
+            background-color: #1a1a1a;
+            border-top: 1px solid #333;
+        }
+
+        .footer-link {
+            color: #ff4c70;
+            font-size: 16px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+
+<body>
+    <span id="page-top"></span>
+
+    <div id="main-header">
+        <img id="main-logo" src="Micara.jpg" alt="Miquel Julián" />
+        <img id="main-handwritten-logo" src="imagenmarca.png" alt="Miquel Julián logo" />
+    </div>
+
+    <div id="main-body">
+        <div id="page-title">
+            <h1>Guide point VFX</h1>
+        </div>
+
+        <div id="video-section">
+            <video width="80%" controls>
+                <source src="GUia.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <section>
+            <div>
+                <p>
+                    This fully procedural stylized effect was crafted entirely using Unreal Engine’s <strong>Material Editor</strong> and <strong>Niagara</strong>, blending multiple dynamic elements:
+                </p>
+                <ul>
+                    <li>A guiding point that emits upward <strong>ribbon trails</strong></li>
+                    <li>A spiraling secondary trail to add motion depth</li>
+                    <li>A <strong>ripple effect on the ground</strong> made with radial distortion</li>
+                    <li>Procedurally spawned <strong>stars around the ripple</strong>, with no textures involved</li>
+                </ul>
+
+                <p>
+                    All elements rely on <strong>math-based materials</strong> (panners, sines, radial UVs), ensuring full scalability and performance on:
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <div id="main-footer">
+        <p><a class="footer-link" href="index.html"><br>Home Page</a></p>
+    </div>
+</body>
+
+</html>
