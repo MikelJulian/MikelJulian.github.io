@@ -89,39 +89,91 @@
             padding-bottom: 6px;
         }
 
+        #video-text-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            flex-wrap: nowrap;
+            margin-bottom: 32px;
+            gap: 24px;
+            box-sizing: border-box;
+            padding: 16px;
+        }
+
+        #video-section {
+            flex: 0 0 65%;
+            max-width: 65%;
+            text-align: center;
+            box-sizing: border-box;
+            padding: 16px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+        }
+
+        #video-section video {
+            width: 100%;
+            height: auto;
+            border: 1px solid #444;
+            border-radius: 8px;
+        }
+
+        #text-section {
+            flex: 0 0 35%;
+            max-width: 35%;
+            box-sizing: border-box;
+            padding: 16px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            #video-text-container {
+                flex-direction: column;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+            #video-section,
+            #text-section {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+
     </style>
 </head>
 
 <body>
     <span id="page-top"></span>
 
-    <div id="main-header">
-        <div id="main-header-name">
-            <img id="main-logo" src="Micara.jpg" alt="Miquel Julián">
-            <img id="main-handwritten-logo" src="imagenmarca.png" alt="Miquel Julián logo">
-        </div>
-    </div>
-
     <div id="main-body">
         <div id="page-title">
             <h1>Asset Renamer & Replacer for Unreal</h1>
         </div>
 
-        <div id="video-section" style="text-align: center; margin-bottom: 32px;">
-            <video width="80%" controls>
-                <source src="renametool.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
+        <div id="video-text-container">
+            <div id="video-section">
+                <video controls>
+                    <source src="renametool.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
 
-        <p>
-            This tool is designed to improve asset management in Unreal Engine. You can rename assets quickly, relocate them to a specific folder inside the Outliner, and even replace a selected asset with another from the asset browser or choose one at random from a selection.
-        </p>
-        <ul>
-            <li>Batch rename assets using custom rules.</li>
-            <li>Quickly send assets to any folder in the Outliner.</li>
-            <li>Replace current asset with any selected or randomized from a list.</li>
-        </ul>
+            <div id="text-section">
+                <p>
+                    This tool is designed to improve asset management in Unreal Engine. You can rename assets quickly,
+                    relocate them to a specific folder inside the Outliner, and even replace a selected asset with
+                    another from the asset browser or choose one at random from a selection.
+                </p>
+                <ul>
+                    <li>Batch rename assets using custom rules.</li>
+                    <li>Quickly send assets to any folder in the Outliner.</li>
+                    <li>Replace current asset with any selected or randomized from a list.</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <div id="main-footer">

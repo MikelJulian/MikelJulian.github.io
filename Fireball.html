@@ -25,25 +25,6 @@
             background-repeat: repeat;
         }
 
-        #main-header {
-            max-width: 100%;
-            padding: 32px 100px;
-            display: flex;
-            align-items: center;
-        }
-
-        #main-logo {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        #main-handwritten-logo {
-            height: 48px;
-            margin-left: 12px;
-        }
-
         #main-body {
             padding: 32px;
         }
@@ -60,9 +41,54 @@
             letter-spacing: 2px;
         }
 
-        #video-section {
-            text-align: center;
+        #video-text-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
             margin-bottom: 32px;
+            flex-wrap: nowrap;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        #video-section {
+            flex: 0 0 65%;
+            max-width: 65%;
+            text-align: center;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        #video-section video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #444;
+        }
+
+        #text-section {
+            flex: 0 0 35%;
+            max-width: 35%;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            #video-text-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #video-section,
+            #text-section {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
         }
 
         #main-footer {
@@ -91,43 +117,43 @@
 <body>
     <span id="page-top"></span>
 
-    <div id="main-header">
-        <img id="main-logo" src="Micara.jpg" alt="Miquel Julián" />
-        <img id="main-handwritten-logo" src="imagenmarca.png" alt="Miquel Julián logo" />
-    </div>
-
     <div id="main-body">
         <div id="page-title">
             <h1>Procedural Fireball VFX</h1>
         </div>
 
-        <div id="video-section">
-            <video width="80%" controls>
-                <source src="fireball.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
+        <div id="video-text-container">
+            <div id="video-section">
+                <video controls>
+                    <source src="fireball.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div id="text-section">
+                <p>
+                    This stylized fireball effect was created entirely inside Unreal Engine's Material Editor, using only math-based functions like
+                    <strong>panners, sines, radial gradients</strong> and <strong>world-space UV distortion</strong>—no external textures involved.
+                </p>
+
+                <p>
+                    The result is a lightweight VFX perfect for:
+                </p>
+                <ul>
+                    <li>VR and mobile platforms</li>
+                    <li>Games with strict memory budgets</li>
+                    <li>Dynamic procedural effects adaptable in real time</li>
+                </ul>
+
+                <p>
+                    By eliminating texture lookups, the fireball remains sharp, adjustable, and efficient—while still delivering a visually rich effect.
+                </p>
+
+                <p>
+                    The material is modular, allowing for easy changes to color, motion intensity, and emissive power via parameters exposed to Niagara or Blueprint.
+                </p>
+            </div>
         </div>
-
-        <p>
-            This stylized fireball effect was created entirely inside Unreal Engine's Material Editor, using only math-based functions like <strong>panners, sines, radial gradients</strong> and <strong>world-space UV distortion</strong>—no external textures involved.
-        </p>
-
-        <p>
-            The result is a lightweight VFX perfect for:
-        </p>
-        <ul>
-            <li>VR and mobile platforms</li>
-            <li>Games with strict memory budgets</li>
-            <li>Dynamic procedural effects adaptable in real time</li>
-        </ul>
-
-        <p>
-            By eliminating texture lookups, the fireball remains sharp, adjustable, and efficient—while still delivering a visually rich effect.
-        </p>
-
-        <p>
-            The material is modular, allowing for easy changes to color, motion intensity, and emissive power via parameters exposed to Niagara or Blueprint.
-        </p>
     </div>
 
     <div id="main-footer">

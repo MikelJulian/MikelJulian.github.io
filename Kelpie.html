@@ -60,9 +60,53 @@
             letter-spacing: 2px;
         }
 
-        #video-section {
-            text-align: center;
+        #video-text-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
             margin-bottom: 32px;
+            flex-wrap: nowrap;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        #video-section {
+            flex: 0 0 65%;
+            max-width: 65%;
+            text-align: center;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        #video-section video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #444;
+        }
+
+        #text-section {
+            flex: 0 0 35%;
+            max-width: 35%;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            #video-text-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #video-section,
+            #text-section {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
         }
 
         #main-footer {
@@ -91,39 +135,39 @@
 <body>
     <span id="page-top"></span>
 
-    <div id="main-header">
-        <img id="main-logo" src="Micara.jpg" alt="Miquel Julián" />
-        <img id="main-handwritten-logo" src="imagenmarca.png" alt="Miquel Julián logo" />
-    </div>
 
     <div id="main-body">
         <div id="page-title">
             <h1>Dynamic VR Shader</h1>
         </div>
 
-        <div id="video-section">
-            <video width="80%" controls>
-                <source src="kelpie.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
+        <div id="video-text-container">
+            <div id="video-section">
+                <video controls>
+                    <source src="kelpie.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div id="text-section">
+                <p>
+                    This custom shader leverages stereo rendering in VR to display <strong>different visuals per eye</strong>. It can be used to:
+                </p>
+                <ul>
+                    <li>Show hidden objects only visible to one eye.</li>
+                    <li>Convey narrative or puzzle elements accessible through subtle stereo illusions.</li>
+                    <li>Display debugging info or UI hints just to developers/testers during VR runtime.</li>
+                </ul>
+
+                <p>
+                    Implemented using custom nodes in Unreal Engine’s material editor and stereo instance awareness, this shader allows total control over what each eye perceives. It's also compatible with post-process materials and translucent elements.
+                </p>
+
+                <p>
+                    This technique opens new doors for creative storytelling, interaction design, and technical problem-solving within immersive environments.
+                </p>
+            </div>
         </div>
-
-        <p>
-            This custom shader leverages stereo rendering in VR to display **different visuals per eye**. It can be used to:
-        </p>
-        <ul>
-            <li>Show hidden objects only visible to one eye.</li>
-            <li>Convey narrative or puzzle elements accessible through subtle stereo illusions.</li>
-            <li>Display debugging info or UI hints just to developers/testers during VR runtime.</li>
-        </ul>
-
-        <p>
-            Implemented using custom nodes in Unreal Engine’s material editor and stereo instance awareness, this shader allows total control over what each eye perceives. It's also compatible with post-process materials and translucent elements.
-        </p>
-
-        <p>
-            This technique opens new doors for creative storytelling, interaction design, and technical problem-solving within immersive environments.
-        </p>
     </div>
 
     <div id="main-footer">

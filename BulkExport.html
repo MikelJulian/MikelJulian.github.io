@@ -60,9 +60,56 @@
             letter-spacing: 2px;
         }
 
-        #video-section {
-            text-align: center;
+        /* Layout video + texto lado a lado */
+        #video-text-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
             margin-bottom: 32px;
+            padding: 16px;
+            box-sizing: border-box;
+            flex-wrap: nowrap;
+        }
+
+        #video-section {
+            flex: 0 0 65%;
+            max-width: 65%;
+            text-align: center;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        #video-section video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #444;
+        }
+
+        #text-section {
+            flex: 0 0 35%;
+            max-width: 35%;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            #video-text-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #video-section,
+            #text-section {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
         }
 
         #main-footer {
@@ -91,36 +138,34 @@
 <body>
     <span id="page-top"></span>
 
-    <div id="main-header">
-        <img id="main-logo" src="Micara.jpg" alt="Miquel Julián" />
-        <img id="main-handwritten-logo" src="imagenmarca.png" alt="Miquel Julián logo" />
-    </div>
-
     <div id="main-body">
         <div id="page-title">
             <h1>Batch Export to 0,0,0 for 3ds Max</h1>
         </div>
 
-        <div id="video-section">
-            <video width="80%" controls>
-                <source src="MaxExport.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
+        <div id="video-text-container">
+            <div id="video-section">
+                <video controls>
+                    <source src="MaxExport.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div id="text-section">
+                <p>
+                    This tool automates the process of exporting multiple assets from a 3ds Max scene by following an intelligent workflow:
+                </p>
+                <ul>
+                    <li>It creates temporary duplicates of all visible assets in the scene.</li>
+                    <li>These duplicates are placed at the world origin (0,0,0) without altering the original hierarchy or transforms.</li>
+                    <li>Each asset is then exported individually with the name of the current Max file.</li>
+                    <li>After export, the duplicates are removed, keeping your original scene untouched and ordered.</li>
+                </ul>
+                <p>
+                    This workflow ensures precision exports while preserving the original scene layout, especially useful for game engines and batch import pipelines.
+                </p>
+            </div>
         </div>
-
-        <p>
-            This tool automates the process of exporting multiple assets from a 3ds Max scene by following an intelligent workflow:
-        </p>
-        <ul>
-            <li>It creates temporary duplicates of all visible assets in the scene.</li>
-            <li>These duplicates are placed at the world origin (0,0,0) without altering the original hierarchy or transforms.</li>
-            <li>Each asset is then exported individually with the name of the current Max file.</li>
-            <li>After export, the duplicates are removed, keeping your original scene untouched and ordered.</li>
-        </ul>
-
-        <p>
-            This workflow ensures precision exports while preserving the original scene layout, especially useful for game engines and batch import pipelines.
-        </p>
     </div>
 
     <div id="main-footer">

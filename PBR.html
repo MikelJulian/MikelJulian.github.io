@@ -60,9 +60,53 @@
             letter-spacing: 2px;
         }
 
-        #video-section {
-            text-align: center;
+        #video-text-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
             margin-bottom: 32px;
+            flex-wrap: nowrap;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        #video-section {
+            flex: 0 0 65%;
+            max-width: 65%;
+            text-align: center;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        #video-section video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #444;
+        }
+
+        #text-section {
+            flex: 0 0 35%;
+            max-width: 35%;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            #video-text-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #video-section,
+            #text-section {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
         }
 
         #main-footer {
@@ -91,27 +135,25 @@
 <body>
     <span id="page-top"></span>
 
-    <div id="main-header">
-        <img id="main-logo" src="Micara.jpg" alt="Miquel Julián" />
-        <img id="main-handwritten-logo" src="imagenmarca.png" alt="Miquel Julián logo" />
-    </div>
 
     <div id="main-body">
         <div id="page-title">
             <h1>PBR Material Popup Tool for 3ds Max</h1>
         </div>
-
-        <div id="video-section">
-            <video width="80%" controls>
-                <source src="PBR.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
+        <div id="video-text-container">
+            <div id="video-section">
+                <video width="80%" controls>
+                    <source src="PBR.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div id="text-section">
+                <p>
+                    This tool streamlines the process of creating PBR materials in 3ds Max by offering a popup window to select your texture maps: Albedo, Normal and ORM.
+                    Once selected, the tool automatically creates a standard material (or Physical Material) with all maps properly connected and named, saving time and ensuring consistency across assets.
+                </p>
+            </div>
         </div>
-
-        <p>
-            This tool streamlines the process of creating PBR materials in 3ds Max by offering a popup window to select your texture maps: Albedo, Normal and ORM.
-            Once selected, the tool automatically creates a standard material (or Physical Material) with all maps properly connected and named, saving time and ensuring consistency across assets.
-        </p>
     </div>
 
     <div id="main-footer">

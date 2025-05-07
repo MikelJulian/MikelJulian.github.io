@@ -60,9 +60,56 @@
             letter-spacing: 2px;
         }
 
-        #video-section {
-            text-align: center;
+        /* Layout video + texto lado a lado */
+        #video-text-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
             margin-bottom: 32px;
+            padding: 16px;
+            box-sizing: border-box;
+            flex-wrap: nowrap;
+        }
+
+        #video-section {
+            flex: 0 0 65%;
+            max-width: 65%;
+            text-align: center;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        #video-section video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #444;
+        }
+
+        #text-section {
+            flex: 0 0 35%;
+            max-width: 35%;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            #video-text-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #video-section,
+            #text-section {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
         }
 
         #main-footer {
@@ -91,39 +138,36 @@
 <body>
     <span id="page-top"></span>
 
-    <div id="main-header">
-        <img id="main-logo" src="Micara.jpg" alt="Miquel Julián" />
-        <img id="main-handwritten-logo" src="imagenmarca.png" alt="Miquel Julián logo" />
-    </div>
 
     <div id="main-body">
         <div id="page-title">
             <h1>Pivot Editor Tool for 3ds Max</h1>
         </div>
+        <div id="video-text-container">
+            <div id="video-section">
+                <video width="80%" controls>
+                    <source src="PivotTool.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div id="text-section">
+                <p>
+                    This tool streamlines pivot editing in 3ds Max by giving you access to quick presets. Instead of manually adjusting each object's pivot point, you can now simply:
+                </p>
+                <ul>
+                    <li>Select from common pivot positions such as bottom center, top center, front, back, or center of mass.</li>
+                    <li>Apply the chosen preset instantly to one or multiple selected objects.</li>
+                    <li>Maintain original transforms and avoid accidental object movement.</li>
+                </ul>
 
-        <div id="video-section">
-            <video width="80%" controls>
-                <source src="PivotTool.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
+                <p>
+                    Perfect for environment art and asset cleanup workflows where uniform pivot control saves time and reduces errors.
+                </p>
+            </div>
         </div>
-
-        <p>
-            This tool streamlines pivot editing in 3ds Max by giving you access to quick presets. Instead of manually adjusting each object's pivot point, you can now simply:
-        </p>
-        <ul>
-            <li>Select from common pivot positions such as bottom center, top center, front, back, or center of mass.</li>
-            <li>Apply the chosen preset instantly to one or multiple selected objects.</li>
-            <li>Maintain original transforms and avoid accidental object movement.</li>
-        </ul>
-
-        <p>
-            Perfect for environment art and asset cleanup workflows where uniform pivot control saves time and reduces errors.
-        </p>
-    </div>
-
-    <div id="main-footer">
-        <p><a class="footer-link" href="index.html"><br>Home Page</a></p>
+        <div id="main-footer">
+            <p><a class="footer-link" href="index.html"><br>Home Page</a></p>
+        </div>
     </div>
 </body>
 
