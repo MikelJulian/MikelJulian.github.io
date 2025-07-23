@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Wireframe Viewer | Miquel Julián</title>
+    <link rel="stylesheet" href="/common/style.css?v=1">
+    <link rel="stylesheet" href="/common/font.css?v=1">
+    <meta name="description" content="An intuitive and lightweight desktop application for visualizing 3D models in wireframe and solid-faced representations.">
+    <style>
+        html {
+            overflow-y: scroll;
+            scrollbar-color: #303030 #111111;
+            scrollbar-width: auto;
+            background-color: #212121;
+        }
+
+        body {
+            color: #d0d0d0;
+            margin: 0;
+            padding: 0;
+            font-family: 'Rubik', sans-serif;
+            font-size: 17px;
+            background-color: #212121;
+            background-image: url("bg_white_noise.webp");
+            background-repeat: repeat;
+        }
+
+        #main-header {
+            max-width: 100%;
+            padding: 32px 100px;
+        }
+
+        #main-header-name {
+            display: flex;
+            align-items: center;
+        }
+
+        #main-logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        #main-handwritten-logo {
+            height: 48px;
+            margin-left: 12px;
+        }
+
+        .header-link {
+            color: #ff4c70;
+            font-size: 16px;
+            font-weight: 500;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+
+        #main-body {
+            padding: 32px;
+        }
+
+        #main-footer {
+            text-align: center;
+            padding: 48px 16px;
+            font-size: 14px;
+            color: #888;
+            background-color: #1a1a1a;
+            border-top: 1px solid #333;
+        }
+
+        .footer-link {
+            color: #ff4c70;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        #page-title {
+            color: #ff4c70;
+            font-size: 28px;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-top: 48px;
+            margin-bottom: 24px;
+            border-bottom: 2px solid #ff4c70;
+            padding-bottom: 6px;
+        }
+
+        #video-text-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            flex-wrap: nowrap;
+            margin-bottom: 32px;
+            gap: 24px;
+            box-sizing: border-box;
+            padding: 16px;
+        }
+
+        #video-section {
+            flex: 0 0 65%;
+            max-width: 65%;
+            text-align: center;
+            box-sizing: border-box;
+            padding: 16px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+        }
+
+        #video-section video {
+            width: 100%;
+            height: auto;
+            border: 1px solid #444;
+            border-radius: 8px;
+        }
+
+        #text-section {
+            flex: 0 0 35%;
+            max-width: 35%;
+            box-sizing: border-box;
+            padding: 16px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            #video-text-container {
+                flex-direction: column;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+            #video-section,
+            #text-section {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <span id="page-top"></span>
+
+    <div id="main-body">
+        <div id="page-title">
+            <h1>3D Wireframe Viewer</h1>
+        </div>
+
+        <div id="video-text-container">
+            <div id="video-section">
+                <video controls>
+                    <source src="LinkedinMotor.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div id="text-section">
+                <p>
+                    An intuitive and lightweight desktop application for visualizing 3D models in wireframe and solid-faced representations.
+                    Developed with <strong>tkinter</strong> for the user interface and <strong>matplotlib</strong> for 3D rendering, this tool is ideal for
+                    engineers, designers, and enthusiasts who need a quick and straightforward way to inspect 3D models.
+                </p>
+                <ul>
+                    <li><strong>Multi-Format Loading:</strong> Supports popular 3D model file formats including .obj, .ply, and .stl.</li>
+                    <p></p>
+                    <li><strong>Flexible Visualization:</strong> Easily switch between wireframe and filled face views.</li>
+                    <p></p>
+                    <li><strong>Customizable Color Controls:</strong> Adjust colors for edges, vertices, faces, and the background.</li>
+                    <p></p>
+                    <li><strong>Predefined Views:</strong> Quickly snap to orthogonal views like Front, Back, Left, Right, Top, and Bottom.</li>
+                    <p></p>
+                    <li><strong>Interactive Navigation:</strong> Use built-in Matplotlib tools to rotate, zoom, and pan your 3D model with ease.</li>
+                    <p></p>
+                    <li><strong>Render Export:</strong> Save snapshots of your current view as .png and .jpg images.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="text-section" style="max-width:100%; flex:1 1 100%; margin-top:24px;">
+            <h2>How to Run the Application</h2>
+            <p>
+                To run this application from source, you'll need Python 3 installed along with the required libraries.
+            </p>
+            <h3>1. Clone the Repository</h3>
+            <pre><code>git clone https://github.com/MikelJulian/3D_Wireframe_Viewer.git
+cd 3D_Wireframe_Viewer</code></pre>
+
+            <h3>2. Install Dependencies</h3>
+            <pre><code>pip install matplotlib numpy</code></pre>
+
+            <h3>3. Execute the Application</h3>
+            <pre><code>python Motor3d.py</code></pre>
+
+            <p>
+                Upon launching the application, you'll see a black screen with the message "Import a 3D model to begin".
+                Click the "Import Mesh" button in the left control panel to load your 3D model file.
+            </p>
+        </div>
+
+        <div id="text-section" style="max-width:100%; flex:1 1 100%; margin-top:24px;">
+            <h2>Underlying Technologies</h2>
+            <ul>
+                <li>Python 3</li>
+                <li>tkinter</li>
+                <li>matplotlib</li>
+                <li>NumPy</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main-footer">
+        <p>
+
+            <br><a class="footer-link" href="index.html">Home Page</a>
+        </p>
+    </div>
+</body>
+
+</html>
