@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertex Animation Textures | Mikel Julián</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet" />
+    <meta name="description" content="Vertex Animation Textures — Houdini simulation baked into textures, reconstructed in real time inside Unreal Engine 5.">
+    <style>
+        html {
+            overflow-y: scroll;
+            scrollbar-color: #303030 #111111;
+            scrollbar-width: auto;
+            background-color: #212121;
+        }
+
+        body {
+            color: #d0d0d0;
+            margin: 0;
+            padding: 0;
+            font-family: 'Rubik', sans-serif;
+            font-size: 17px;
+            background-color: #212121;
+            background-image: url("bg_white_noise.webp");
+            background-repeat: repeat;
+        }
+
+        #main-body {
+            padding: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #main-footer {
+            text-align: center;
+            padding: 48px 16px;
+            font-size: 14px;
+            color: #888;
+            background-color: #1a1a1a;
+            border-top: 1px solid #333;
+        }
+
+        .footer-link {
+            color: #ff4c70;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        #page-title {
+            color: #ff4c70;
+            font-size: 28px;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-top: 48px;
+            margin-bottom: 8px;
+            border-bottom: 2px solid #ff4c70;
+            padding-bottom: 6px;
+        }
+
+        #page-title h1 {
+            margin: 0;
+            font-size: inherit;
+            font-weight: inherit;
+        }
+
+        .subtitle-badge {
+            display: inline-block;
+            margin-top: 10px;
+            margin-bottom: 28px;
+            background-color: #2e2e2e;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 4px 14px;
+            font-size: 13px;
+            color: #aaa;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        #video-text-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            flex-wrap: nowrap;
+            margin-bottom: 32px;
+            gap: 24px;
+            box-sizing: border-box;
+        }
+
+        #video-section {
+            flex: 0 0 65%;
+            max-width: 65%;
+            text-align: center;
+            box-sizing: border-box;
+            padding: 16px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+        }
+
+        #video-section video {
+            width: 100%;
+            height: auto;
+            border: 1px solid #444;
+            border-radius: 8px;
+        }
+
+        #text-section {
+            flex: 0 0 35%;
+            max-width: 35%;
+            box-sizing: border-box;
+            padding: 16px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+        }
+
+        #text-section h3 {
+            color: #ff4c70;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        #text-section ul {
+            padding-left: 20px;
+        }
+
+        #text-section ul li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .info-block {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin-top: 24px;
+        }
+
+        .info-block h2 {
+            color: #ff4c70;
+            font-size: 20px;
+            margin-top: 0;
+            margin-bottom: 14px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .info-block p {
+            line-height: 1.7;
+            color: #ccc;
+        }
+
+        /* Pipeline steps — 3 columns */
+        .pipeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .pipeline-card {
+            background-color: #242424;
+            border: 1px solid #3a3a3a;
+            border-radius: 8px;
+            padding: 16px 18px;
+            position: relative;
+        }
+
+        .pipeline-card .step-num {
+            font-size: 11px;
+            color: #ff4c70;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .pipeline-card h4 {
+            color: #ff4c70;
+            font-size: 15px;
+            margin: 0 0 8px 0;
+        }
+
+        .pipeline-card p {
+            font-size: 14px;
+            color: #aaa;
+            margin: 0;
+            line-height: 1.55;
+        }
+
+        /* Takeaway cards */
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .lesson-card {
+            background-color: #242424;
+            border: 1px solid #3a3a3a;
+            border-radius: 8px;
+            padding: 16px 18px;
+        }
+
+        .lesson-card h4 {
+            color: #ff4c70;
+            font-size: 15px;
+            margin: 0 0 6px 0;
+        }
+
+        .lesson-card p {
+            font-size: 14px;
+            color: #aaa;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Code block */
+        .code-block {
+            background-color: #181818;
+            border: 1px solid #3a3a3a;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-top: 16px;
+            overflow-x: auto;
+        }
+
+        .code-label {
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .code-block code {
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #b5cea8;
+            line-height: 1.8;
+            white-space: pre;
+            display: block;
+        }
+
+        .code-block code .cm { color: #555; }
+        .code-block code .kw { color: #569cd6; }
+        .code-block code .fn { color: #dcdcaa; }
+        .code-block code .nm { color: #9cdcfe; }
+        .code-block code .op { color: #d4d4d4; }
+
+        @media (max-width: 768px) {
+            #video-text-container {
+                flex-direction: column;
+            }
+
+            #video-section,
+            #text-section {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+
+            #main-body {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <span id="page-top"></span>
+
+    <div id="main-body">
+
+        <div id="page-title">
+            <h1>Vertex Animation Textures</h1>
+        </div>
+        <div class="subtitle-badge">Houdini FX &nbsp;·&nbsp; Unreal Engine 5 &nbsp;·&nbsp; VAT Pipeline</div>
+
+        <div id="video-text-container">
+
+            <div id="video-section">
+                <video autoplay loop muted playsinline>
+                    <source src="Pared.mov" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div id="text-section">
+                <p>
+                    Vertex Animation Textures (VAT) allow complex physics simulations to play back in real time
+                    at virtually <b>zero GPU cost</b>. Instead of solving physics at runtime, position and rotation
+                    data from a <b>Houdini simulation</b> is baked into textures and read by
+                    Houdini Engine's <b>VAT shaders inside UE5</b> — the GPU performs a texture lookup, not a physics solve.
+                </p>
+                <p style="color:#aaa; font-size:15px;">
+                    After studying a breakdown by AblazeInt on 80 Level, I replicated the full pipeline
+                    to understand how simulation data is encoded, exported, and reconstructed in-engine.
+                </p>
+
+                <h3>What it demonstrates</h3>
+                <ul>
+                    <li><b>Full Houdini → UE5 pipeline</b> — export, encode, and decode without any Lab plugins.</li>
+                    <li><b>Shader programming</b> — custom material reconstructs world-space position and rotation per vertex.</li>
+                    <li><b>Runtime optimization</b> — suitable for VR, mobile, and scenes with hundreds of animated instances.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Pipeline -->
+        <div class="info-block">
+            <h2>Pipeline</h2>
+            <div class="pipeline-grid">
+                <div class="pipeline-card">
+                    <div class="step-num">01 · Houdini</div>
+                    <h4>Physics simulation</h4>
+                    <p>A rigid-body simulation drives the wall collapse. Position (XYZ) and rotation (quaternion) are extracted per vertex, per frame, and prepared for export.</p>
+                </div>
+                <div class="pipeline-card">
+                    <div class="step-num">02 · VAT Export</div>
+                    <h4>Baking into textures</h4>
+                    <p>World-space position and rotation are encoded into the RGB and Alpha channels of two 16-bit float textures. Each row = one frame, each column = one vertex.</p>
+                </div>
+                <div class="pipeline-card">
+                    <div class="step-num">03 · UE5 Shader</div>
+                    <h4>Real-time reconstruction</h4>
+                    <p>A custom material reads the VAT textures, decodes position and rotation, and applies them as a World Position Offset. Zero physics cost at runtime.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Takeaways -->
+        <div class="info-block">
+            <h2>Key Takeaways</h2>
+            <div class="lessons-grid">
+                <div class="lesson-card">
+                    <h4>How simulation data is encoded into textures</h4>
+                    <p>Understanding how Houdini packs world-space position and rotation into the pixel channels of a texture — and why texture precision and bounding-box normalization matter for the result.</p>
+                </div>
+                <div class="lesson-card">
+                    <h4>Houdini Engine → UE5 VAT workflow</h4>
+                    <p>Setting up the full export pipeline: simulation, VAT export settings, texture import into UE5, and correct configuration of Houdini's VAT shaders to reconstruct the animation in-engine.</p>
+                </div>
+                <div class="lesson-card">
+                    <h4>Why VAT outperforms runtime physics</h4>
+                    <p>A rigid-body sim in UE5 Chaos scales poorly with object count. VAT reduces runtime cost to a texture lookup per vertex — suitable for VR, mobile, and scenes with many animated instances.</p>
+                </div>
+                <div class="lesson-card">
+                    <h4>Reading other people's technical work</h4>
+                    <p>Studying a professional breakdown and replicating it independently is a core skill in tech art. Understanding why each step exists is what turns a reference into transferable knowledge.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reflection -->
+        <div class="info-block">
+            <h2>Reflection</h2>
+            <p>
+                The most valuable part of this project was not the result itself but the process of
+                understanding why each step of the VAT pipeline exists. Knowing how simulation data is
+                structured inside a texture — and how the shader reads it back — gives me a mental model
+                I can apply whenever a project needs to trade live computation for pre-baked data,
+                regardless of the simulation type.
+            </p>
+        </div>
+
+    </div>
+
+    <div id="main-footer">
+        <p>
+            <a class="footer-link" href="index.html">← Back to Portfolio</a>
+        </p>
+        <p>Mikel Julián — 2025</p>
+    </div>
+
+</body>
+</html>
