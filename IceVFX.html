@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niagara Ice Arrows System | Miquel Julián</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet" />
+    <meta name="description" content="Niagara Ice Arrows System — VFX particle system built in Unreal Engine 5 with Niagara.">
+    <style>
+        html {
+            overflow-y: scroll;
+            scrollbar-color: #303030 #111111;
+            scrollbar-width: auto;
+            background-color: #212121;
+        }
+
+        body {
+            color: #d0d0d0;
+            margin: 0;
+            padding: 0;
+            font-family: 'Rubik', sans-serif;
+            font-size: 17px;
+            background-color: #212121;
+            background-image: url("bg_white_noise.webp");
+            background-repeat: repeat;
+        }
+
+        #main-body {
+            padding: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #main-footer {
+            text-align: center;
+            padding: 48px 16px;
+            font-size: 14px;
+            color: #888;
+            background-color: #1a1a1a;
+            border-top: 1px solid #333;
+        }
+
+        .footer-link {
+            color: #ff4c70;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        #page-title {
+            color: #ff4c70;
+            font-size: 28px;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-top: 48px;
+            margin-bottom: 8px;
+            border-bottom: 2px solid #ff4c70;
+            padding-bottom: 6px;
+        }
+
+        #page-title h1 {
+            margin: 0;
+            font-size: inherit;
+            font-weight: inherit;
+        }
+
+        .subtitle-badge {
+            display: inline-block;
+            margin-top: 10px;
+            margin-bottom: 28px;
+            background-color: #2e2e2e;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 4px 14px;
+            font-size: 13px;
+            color: #aaa;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        #video-text-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            flex-wrap: nowrap;
+            margin-bottom: 32px;
+            gap: 24px;
+            box-sizing: border-box;
+        }
+
+        #video-section {
+            flex: 0 0 65%;
+            max-width: 65%;
+            text-align: center;
+            box-sizing: border-box;
+            padding: 16px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+        }
+
+        #video-section video,
+        #video-section img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #444;
+            border-radius: 8px;
+        }
+
+        #video-section .placeholder-media {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-color: #2a2a2a;
+            border: 1px dashed #555;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        #text-section {
+            flex: 0 0 35%;
+            max-width: 35%;
+            box-sizing: border-box;
+            padding: 16px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+        }
+
+        #text-section h3 {
+            color: #ff4c70;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        #text-section ul {
+            padding-left: 20px;
+        }
+
+        #text-section ul li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .info-block {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin-top: 24px;
+        }
+
+        .info-block h2 {
+            color: #ff4c70;
+            font-size: 20px;
+            margin-top: 0;
+            margin-bottom: 14px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .info-block p {
+            line-height: 1.7;
+            color: #ccc;
+        }
+
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .lesson-card {
+            background-color: #242424;
+            border: 1px solid #3a3a3a;
+            border-radius: 8px;
+            padding: 16px 18px;
+        }
+
+        .lesson-card h4 {
+            color: #ff4c70;
+            font-size: 15px;
+            margin: 0 0 6px 0;
+        }
+
+        .lesson-card p {
+            font-size: 14px;
+            color: #aaa;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background-color: #2d2010;
+            border: 1px solid #8a5c00;
+            color: #ff4c70;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 3px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            margin-left: 12px;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 768px) {
+            #video-text-container {
+                flex-direction: column;
+            }
+
+            #video-section,
+            #text-section {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+
+            #main-body {
+                padding: 16px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <span id="page-top"></span>
+
+    <div id="main-body">
+
+        <div id="page-title">
+            <h1>Niagara Ice Arrows System</h1>
+        </div>
+        <div class="subtitle-badge">Niagara VFX System &nbsp;·&nbsp; Unreal Engine 5</div>
+
+        <div id="video-text-container">
+
+            <div id="video-section">
+                <!-- Reemplaza el src con tu vídeo o imagen real cuando lo tengas -->
+                <video controls>
+                    <source src="MA1_TECH_2526_MikelJulian_VFX.mov" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div id="text-section">
+                <p>
+                    Project developed in <b>Unreal Engine 5</b> using the
+                    <b>Niagara</b> particle system to create an ice-themed
+                    ranged attack: the caster charges a set of ice crystals
+                    in each hand before launching them as homing shards
+                    toward the target. During this stage of my development
+                    I have been deepening my knowledge of Niagara's emitter
+                    and module workflow, building reusable effects that can be
+                    triggered directly from gameplay events.
+                </p>
+                <p style="color:#aaa; font-size:15px;">
+                    Still in an early stage, the project is under active development
+                    and I intend to keep expanding its capabilities.
+                </p>
+
+                <h3>Current features</h3>
+                <ul>
+                    <li><b>Charge-up effect</b> — ice crystals form and spin in each hand before the arrows are released.</li>
+                    <li><b>Homing ice projectiles</b> — multiple snowflake-shaped shards launch from the caster and travel toward the target.</li>
+                    <li><b>Frost impact</b> — a burst of icy particles surrounds the target on hit, reinforcing the freeze feedback.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="info-block">
+            <h2>Key Takeaways</h2>
+            <div class="lessons-grid">
+                <div class="lesson-card">
+                    <h4>Emitter and module design</h4>
+                    <p>Structuring Niagara emitters and modules to build the charge, launch, and impact stages of the ice arrow effect from scratch.</p>
+                </div>
+                <div class="lesson-card">
+                    <h4>Homing projectile behavior</h4>
+                    <p>Driving multiple simultaneous ice shards to travel from the caster's hands toward a target location.</p>
+                </div>
+                <div class="lesson-card">
+                    <h4>Impact-driven feedback</h4>
+                    <p>Triggering the frost burst on hit to give clear, readable visual feedback tied to gameplay events.</p>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div id="main-footer">
+        <p>
+            <a class="footer-link" href="index.html">← Back to Portfolio</a>
+        </p>
+        <p>Mikel Julián — 2025</p>
+    </div>
+
+</body>
+
+</html>
